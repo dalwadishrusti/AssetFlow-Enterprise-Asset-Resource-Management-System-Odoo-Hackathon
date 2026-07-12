@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Admin User",
+    "email": "admin@assetflow.com",
+    "password": "admin123",
+    "role": "Admin",
+    "department": "Administration",
+    "phone": "9876543210",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Rahul Sharma",
+    "email": "rahul@assetflow.com",
+    "password": "rahul123",
+    "role": "Asset Manager",
+    "department": "IT",
+    "phone": "9876543201",
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "name": "Amit Kumar",
+    "email": "employee@assetflow.com",
+    "password": "employee123",
+    "role": "Employee",
+    "department": "Finance",
+    "phone": "9876543202",
+    "status": "Active"
+  }
+]
