@@ -1,7 +1,118 @@
 import { useState } from "react";
+import "./CSS/Login.css";
+import users from "../data/user.json";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [login, setLogin] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [fullName, setFullName] = useState("");
+  const [signupEmail, setSignupEmail] = useState("");
+  const [signupPassword, setSignupPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+
+    e.preventDefault();
+
+    const localUsers =
+      JSON.parse(localStorage.getItem("users")) || [];
+
+    const allUsers = [...users, ...localUsers];
+
+    const user = allUsers.find(
+      (u) =>
+        u.email === email &&
+        u.password === password
+    );
+
+    if (user) {
+
+      localStorage.setItem("currentUser", JSON.stringify(user));
+
+      navigate("/dashboard");
+
+    }
+    else {
+
+      alert("Invalid Email or Password");
+
+    }
+
+  };
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+
+    // Check empty fields
+    if (
+      fullName === "" ||
+      signupEmail === "" ||
+      signupPassword === "" ||
+      confirmPassword === ""
+    ) {
+      alert("Please fill all fields.");
+      return;
+    }
+
+    // Passwords match?
+    if (signupPassword !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+
+    // Get users already stored in localStorage
+    const localUsers =
+      JSON.parse(localStorage.getItem("users")) || [];
+
+    // Combine demo users + local users
+    const allUsers = [...users, ...localUsers];
+
+    // Check if email already exists
+    const existingUser = allUsers.find(
+      (user) => user.email === signupEmail
+    );
+
+    if (existingUser) {
+      alert("Email already exists.");
+      return;
+    }
+
+    // Create new user
+    const newUser = {
+      id: allUsers.length + 1,
+      name: fullName,
+      email: signupEmail,
+      password: signupPassword,
+      role: "Employee",
+      department: "Not Assigned",
+      phone: "",
+      status: "Active"
+    };
+
+    // Save only the new users in localStorage
+    localUsers.push(newUser);
+
+    localStorage.setItem(
+      "users",
+      JSON.stringify(localUsers)
+    );
+
+    alert("Account created successfully!");
+
+    // Clear form
+    setFullName("");
+    setSignupEmail("");
+    setSignupPassword("");
+    setConfirmPassword("");
+
+    // Return to login page
+    setLogin(true);
+  };
 
   return (
     <div className="container">
@@ -13,13 +124,15 @@ function Login() {
 
           <div className="logo">AF</div>
 
-          <form>
+          <form onSubmit={handleLogin}>
 
             <label>Email</label>
 
             <input
               type="email"
               placeholder="name@company.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <label>Password</label>
@@ -27,6 +140,8 @@ function Login() {
             <input
               type="password"
               placeholder="********"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
             <p>Forgot Password?</p>
@@ -61,13 +176,15 @@ function Login() {
 
           <div className="logo">AF</div>
 
-          <form>
+          <form onSubmit={handleSignup}>
 
             <label>Full Name</label>
 
             <input
               type="text"
               placeholder="Enter your full name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             />
 
             <label>Email</label>
@@ -75,6 +192,8 @@ function Login() {
             <input
               type="email"
               placeholder="name@company.com"
+              value={signupEmail}
+              onChange={(e) => setSignupEmail(e.target.value)}
             />
 
             <label>Password</label>
@@ -82,6 +201,8 @@ function Login() {
             <input
               type="password"
               placeholder="Create Password"
+              value={signupPassword}
+              onChange={(e) => setSignupPassword(e.target.value)}
             />
 
             <label>Confirm Password</label>
@@ -89,8 +210,9 @@ function Login() {
             <input
               type="password"
               placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
-
             <button type="submit">
               Create Account
             </button>

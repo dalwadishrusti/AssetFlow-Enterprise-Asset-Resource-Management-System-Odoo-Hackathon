@@ -1,0 +1,250 @@
+/* ---------- Reset ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------- Page ---------- */
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f5f5f7;
+    padding: 20px;
+}
+
+/* ---------- Card ---------- */
+
+.card {
+    width: 450px;
+    max-width: 100%;
+
+    background: #ffffff;
+
+    padding: 40px;
+
+    border-radius: 16px;
+
+    border: 1px solid #e5e5e5;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Heading ---------- */
+
+.card h1 {
+    text-align: center;
+
+    color: #714B67;
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+
+    font-weight: 700;
+}
+
+/* ---------- Logo ---------- */
+
+.logo {
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 30px;
+
+    border-radius: 50%;
+
+    background: #714B67;
+
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+/* ---------- Form ---------- */
+
+form {
+    width: 100%;
+}
+
+label {
+    display: block;
+
+    margin-top: 18px;
+    margin-bottom: 8px;
+
+    color: #444;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #d7d7d7;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: .3s;
+}
+
+input::placeholder {
+    color: #999;
+}
+
+input:focus {
+    border-color: #714B67;
+
+    box-shadow: 0 0 0 3px rgba(113, 75, 103, .15);
+}
+
+/* ---------- Forgot Password ---------- */
+
+form p {
+    margin-top: 12px;
+
+    margin-bottom: 22px;
+
+    text-align: right;
+
+    color: #714B67;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+form p:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Buttons ---------- */
+
+button {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #714B67;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+button:hover {
+    background: #5f3f57;
+}
+
+/* ---------- Divider ---------- */
+
+hr {
+    margin: 30px 0;
+
+    border: none;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+/* ---------- Bottom Section ---------- */
+
+.card h3 {
+    text-align: center;
+
+    color: #333;
+
+    margin-bottom: 12px;
+}
+
+.card > p {
+    text-align: center;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 24px;
+
+    margin-bottom: 20px;
+}
+
+/* ---------- Secondary Button ---------- */
+
+.card > button {
+    background: white;
+
+    color: #714B67;
+
+    border: 1px solid #714B67;
+}
+
+.card > button:hover {
+    background: #714B67;
+
+    color: white;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 500px) {
+
+    .card {
+
+        width: 100%;
+
+        padding: 30px 20px;
+    }
+
+    .card h1 {
+
+        font-size: 26px;
+    }
+
+    .logo {
+
+        width: 70px;
+        height: 70px;
+
+        font-size: 24px;
+    }
+
+}
