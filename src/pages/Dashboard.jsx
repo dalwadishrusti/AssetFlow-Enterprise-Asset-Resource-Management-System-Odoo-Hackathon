@@ -1,18 +1,56 @@
 import "./CSS/Dashboard.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Dashboard() {
-
     const navigate = useNavigate();
 
     const [menuOpen, setMenuOpen] = useState(false);
 
-      const handleLogout = () => {
+    const [dashboard, setDashboard] = useState({
+        assetsAvailable: 0,
+        assetsAllocated: 0,
+        maintenanceToday: 0,
+        activeBookings: 0,
+        pendingTransfers: 0,
+        upcomingReturns: 0,
+        overdueReturns: 0,
+        recentActivity: []
+    });
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchDashboard();
+    }, []);
+
+    const fetchDashboard = async () => {
+        try {
+            const response = await fetch("http://localhost:8000/dashboard");
+
+            const data = await response.json();
+
+            setDashboard(data);
+        } catch (error) {
+            console.error("Error fetching dashboard:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleLogout = () => {
         navigate("/");
     };
 
-
+    if (loading) {
+        return (
+            <div className="dashboard">
+                <div className="loading">
+                    Loading Dashboard...
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={`dashboard ${menuOpen ? "menu-open" : ""}`}>
@@ -25,10 +63,7 @@ function Dashboard() {
                     className="logo"
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
-
                     <h2>AF</h2>
-
-
                 </div>
 
                 <button className="active">Dashboard</button>
@@ -57,17 +92,21 @@ function Dashboard() {
                     Audit
                 </button>
 
-                <button>Reports</button>
+                <button>
+                    Reports
+                </button>
 
-                <button>Notifications</button>
+                <button>
+                    Notifications
+                </button>
 
             </div>
 
-            {/* Main Section */}
+            {/* Main */}
 
             <div className="main">
 
-                {/* Navbar */}
+                {/* Header */}
 
                 <div className="header">
 
@@ -82,7 +121,7 @@ function Dashboard() {
 
                 </div>
 
-                {/* Dashboard Content */}
+                {/* Content */}
 
                 <div className="content">
 
@@ -92,72 +131,67 @@ function Dashboard() {
 
                         <div className="card">
                             <h3>Assets Available</h3>
-                            <p>128</p>
+                            <p>{dashboard.assetsAvailable}</p>
                         </div>
 
                         <div className="card">
                             <h3>Assets Allocated</h3>
-                            <p>76</p>
+                            <p>{dashboard.assetsAllocated}</p>
                         </div>
 
                         <div className="card">
                             <h3>Maintenance Today</h3>
-                            <p>4</p>
+                            <p>{dashboard.maintenanceToday}</p>
                         </div>
 
                         <div className="card">
                             <h3>Active Bookings</h3>
-                            <p>9</p>
+                            <p>{dashboard.activeBookings}</p>
                         </div>
 
                         <div className="card">
                             <h3>Pending Transfers</h3>
-                            <p>3</p>
+                            <p>{dashboard.pendingTransfers}</p>
                         </div>
 
                         <div className="card">
                             <h3>Upcoming Returns</h3>
-                            <p>12</p>
+                            <p>{dashboard.upcomingReturns}</p>
                         </div>
 
                     </div>
+
+                    {/* Alert */}
 
                     <div className="alert">
 
                         <h3>Overdue Returns</h3>
 
                         <p>
-                            Three assets are overdue for return.
+                            {dashboard.overdueReturns} assets are overdue for return.
                             Please take immediate action.
                         </p>
 
                     </div>
 
+                    {/* Quick Actions */}
+
                     <div className="actions">
 
-                        <button>Register Asset</button>
+                        <button onClick={() => navigate("/assets")}>
+                            Register Asset
+                        </button>
 
-                        <button>Book Resource</button>
+                        <button onClick={() => navigate("/resource")}>
+                            Book Resource
+                        </button>
 
-                        <button>Raise Maintenance Request</button>
-
-                    </div>
-
-                    <div className="activity">
-
-                        <h2>Recent Activity</h2>
-
-                        <ul>
-
-                            <li>Laptop AF-0114 allocated to Priya Shah</li>
-
-                            <li>Meeting Room B2 booked from 2:00 PM to 3:00 PM</li>
-
-                            <li>Projector AF-0062 maintenance completed</li>
-
-                        </ul>
+                        <button onClick={() => navigate("/maintenance")}>
+                            Raise Maintenance Request
+                        </button>
 
                     </div>
+
 
                 </div>
 

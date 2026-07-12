@@ -345,3 +345,25 @@ tbody tr:hover {
 }
 
 }
+
+.popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-content{
+    background:white;
+    width:400px;
+    padding:20px;
+    border-radius:10px;
+}
+
+.popup-content input{
+    width:100%;
+    margin:10px 0;
+    padding:10px;
+}
