@@ -56,30 +56,12 @@ function OrganizationSetup() {
 
                 </button>
 
-<<<<<<< HEAD
 
 
                 <button>
                     Allocation & Transfer
                 </button>
 
-=======
-                <button onClick={() => navigate("/allocation")}>
-                    Allocation & Transfer
-                </button>
-
-                <button onClick={() => navigate("/resource")}>
-                    Resource Booking
-                </button>
-
-                <button onClick={() => navigate("/maintenance")}>
-                    Maintenance
-                </button>
-
-                <button onClick={() => navigate("/audit")}>
-                    Audit
-                </button>
->>>>>>> d7a4921add9a816cfdc4faf58e2140efa5c3a301
 
                 <button>
                     Resource Booking
