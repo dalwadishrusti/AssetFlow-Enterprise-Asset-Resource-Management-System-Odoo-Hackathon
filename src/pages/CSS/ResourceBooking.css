@@ -1,0 +1,848 @@
+
+
+.sidebar{
+
+    width:240px;
+    background:#212529;
+    min-height:100vh;
+    padding:15px 12px;
+    position:fixed;
+    left:0;
+    top:0;
+
+}
+
+
+
+.logo{
+
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:15px;
+
+}
+
+
+.logo h2{
+
+    background:#714B67;
+    color:white;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+
+}
+
+
+
+
+.sidebar button{
+
+    width:100%;
+    padding:12px 15px;
+    margin-bottom:6px;
+
+    background:transparent;
+    color:#dee2e6;
+
+    border:none;
+    border-radius:6px;
+
+    text-align:left;
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.2s;
+
+}
+
+
+
+.sidebar button:hover{
+
+    background:#343a40;
+    color:white;
+
+}
+
+
+
+.sidebar button.active{
+
+    background:#714B67;
+    color:white;
+
+}
+
+
+
+/* ==============================
+   MAIN AREA
+================================ */
+
+
+.main{
+
+    margin-left:240px;
+    width:calc(100% - 240px);
+
+}
+
+
+
+/* ==============================
+   TOP BAR
+================================ */
+
+
+.header{
+
+
+    height:65px;
+
+    background:white;
+
+    border-bottom:1px solid #ddd;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 25px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+
+
+}
+
+
+
+.header h1{
+
+    font-size:22px;
+    font-weight:600;
+    color:#374151;
+
+}
+
+
+
+.logout-btn{
+
+    background:#dc3545;
+
+    color:white;
+
+    border:none;
+
+    padding:9px 18px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+}
+
+
+
+.logout-btn:hover{
+
+    background:#bb2d3b;
+
+}
+
+
+
+
+
+
+/* =====================================
+   RESOURCE BOOKING PAGE
+   ODOO STYLE
+===================================== */
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+.resource-container{
+
+    padding:25px;
+
+    background:#f5f5f5;
+
+    min-height:calc(100vh - 65px);
+
+}
+
+
+
+.resource-container h1{
+
+    font-size:24px;
+
+    font-weight:600;
+
+    color:#343a40;
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+/* =====================================
+   RESOURCE SELECT CARD
+===================================== */
+
+
+.resource-select{
+
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.resource-select label{
+
+
+    display:block;
+
+    font-weight:600;
+
+    color:#495057;
+
+    margin-bottom:8px;
+
+
+}
+
+
+
+.resource-select select{
+
+
+    width:300px;
+
+    padding:10px 12px;
+
+    border:1px solid #ced4da;
+
+    border-radius:5px;
+
+    background:white;
+
+    font-size:14px;
+
+
+}
+
+
+
+.resource-select select:focus{
+
+
+    outline:none;
+
+    border-color:#714B67;
+
+}
+
+
+
+
+
+/* =====================================
+   CALENDAR SECTION
+===================================== */
+
+
+.calendar{
+
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.calendar h2{
+
+
+    font-size:18px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+    color:#343a40;
+
+
+}
+
+
+
+
+
+
+
+.timeline{
+
+
+    border:1px solid #e5e7eb;
+
+    border-radius:6px;
+
+    overflow:hidden;
+
+
+}
+
+
+
+
+.time-row{
+
+
+    display:flex;
+
+    min-height:70px;
+
+    border-bottom:1px solid #eee;
+
+
+}
+
+
+
+
+.time-row:last-child{
+
+    border-bottom:none;
+
+}
+
+
+
+
+
+.time{
+
+
+    width:100px;
+
+    background:#f8f9fa;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:600;
+
+    color:#6c757d;
+
+    border-right:1px solid #eee;
+
+
+}
+
+
+
+
+
+.slot{
+
+
+    flex:1;
+
+    padding:10px;
+
+    position:relative;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   BOOKING CARD
+===================================== */
+
+
+.booking{
+
+
+    background:#714B67;
+
+    color:white;
+
+    border-radius:6px;
+
+    padding:10px 15px;
+
+    font-size:14px;
+
+    width:250px;
+
+    box-shadow:0 2px 5px rgba(0,0,0,.15);
+
+
+}
+
+
+
+.booking.Upcoming{
+
+
+    background:#714B67;
+
+
+}
+
+
+
+.booking.Cancelled{
+
+
+    background:#dc3545;
+
+    text-decoration:line-through;
+
+}
+
+
+
+
+
+/* =====================================
+   BOOKING FORM
+===================================== */
+
+
+.booking-form{
+
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.booking-form h2{
+
+
+    font-size:20px;
+
+    margin-bottom:20px;
+
+    color:#343a40;
+
+
+}
+
+
+
+
+
+.booking-form label{
+
+
+    display:block;
+
+    font-weight:500;
+
+    margin-bottom:7px;
+
+    color:#495057;
+
+
+}
+
+
+
+
+
+.booking-form input{
+
+
+    width:100%;
+
+    padding:11px 12px;
+
+    border:1px solid #ced4da;
+
+    border-radius:5px;
+
+    margin-bottom:15px;
+
+    font-size:14px;
+
+
+}
+
+
+
+
+.booking-form input:focus{
+
+
+    outline:none;
+
+    border-color:#714B67;
+
+    box-shadow:0 0 0 2px rgba(113,75,103,.15);
+
+
+}
+
+
+
+
+
+
+.booking-form button{
+
+
+    background:#714B67;
+
+    color:white;
+
+    border:none;
+
+    padding:11px 25px;
+
+    border-radius:5px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+
+}
+
+
+
+.booking-form button:hover{
+
+
+    background:#5d3d55;
+
+
+}
+
+
+
+
+
+/* =====================================
+   MESSAGE
+===================================== */
+
+
+.message{
+
+
+    background:#d1e7dd;
+
+    border:1px solid #badbcc;
+
+    color:#0f5132;
+
+    padding:12px 15px;
+
+    border-radius:6px;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+/* =====================================
+   HISTORY TABLE
+===================================== */
+
+
+.history{
+
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    padding:20px;
+
+    overflow:auto;
+
+
+}
+
+
+
+
+.history h2{
+
+
+    font-size:20px;
+
+    margin-bottom:20px;
+
+    color:#343a40;
+
+
+}
+
+
+
+
+
+
+.history table{
+
+
+    width:100%;
+
+    border-collapse:collapse;
+
+
+}
+
+
+
+
+.history thead{
+
+
+    background:#f8f9fa;
+
+
+}
+
+
+
+
+
+.history th{
+
+
+    text-align:left;
+
+    padding:13px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#495057;
+
+    border-bottom:2px solid #dee2e6;
+
+
+}
+
+
+
+
+
+
+
+.history td{
+
+
+    padding:13px;
+
+    border-bottom:1px solid #eee;
+
+    font-size:14px;
+
+
+}
+
+
+
+
+.history tbody tr:hover{
+
+
+    background:#fafafa;
+
+
+}
+
+
+
+
+
+/* =====================================
+   CANCEL BUTTON
+===================================== */
+
+
+.cancel{
+
+
+    background:#dc3545;
+
+    color:white;
+
+    border:none;
+
+    padding:7px 15px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+
+}
+
+
+
+.cancel:hover{
+
+
+    background:#bb2d3b;
+
+
+}
+
+
+
+
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+
+@media(max-width:900px){
+
+
+.resource-select select{
+
+    width:100%;
+
+}
+
+
+
+.time{
+
+    width:70px;
+
+}
+
+
+
+.booking{
+
+    width:180px;
+
+    font-size:12px;
+
+}
+
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+
+.resource-container{
+
+    padding:15px;
+
+}
+
+
+
+.calendar{
+
+    overflow-x:auto;
+
+}
+
+
+
+.timeline{
+
+    min-width:600px;
+
+}
+
+
+
+.booking-form{
+
+    padding:15px;
+
+}
+
+
+}
