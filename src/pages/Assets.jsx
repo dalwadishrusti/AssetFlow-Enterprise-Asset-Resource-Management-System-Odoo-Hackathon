@@ -415,39 +415,7 @@ function Assets() {
                         </table>
                     </div>
 
-                    {/* Asset History */}
-
-                    <div className="history-section">
-
-                        <div className="history-card">
-
-                            <h3>Allocation History</h3><br></br>
-
-                            <ul>
-
-                                <li>15 Jul 2026 - Allocated to Rahul Sharma</li>
-
-                                <li>12 Jul 2026 - Returned by Sneha Patel</li>
-
-                            </ul>
-
-                        </div>
-
-                        <div className="history-card">
-
-                            <h3>Maintenance History</h3><br></br>
-
-                            <ul>
-
-                                <li>02 Jul 2026 - Battery Replaced</li>
-
-                                <li>18 Jun 2026 - Annual Health Check</li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
+                    
 
                 </div>
             </div>
