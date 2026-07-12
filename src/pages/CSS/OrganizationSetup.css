@@ -1,81 +1,800 @@
-.content{
+/* ==================================
+      Organization Setup CSS
+      Odoo Style
+================================== */
+
+
+
+/* Main Content Wrapper */
+
+
+.org-content {
+
     padding:30px;
+
 }
 
-.content h2{
-    margin-bottom:25px;
-}
 
-.top-buttons{
+
+
+
+/* ==================================
+        PAGE HEADER
+================================== */
+
+
+.org-header {
+
     display:flex;
-    gap:15px;
+
+    justify-content:space-between;
+
+    align-items:center;
+
     margin-bottom:25px;
+
 }
 
-.top-buttons button{
-    padding:10px 30px;
+
+
+.org-header h1 {
+
+    font-size:25px;
+
+    color:#333;
+
+    font-weight:600;
+
+}
+
+
+
+.add-btn {
+
+    background:#714B67;
+
+    color:white;
+
     border:none;
-    border-radius:8px;
-    background:#e5e7eb;
+
+    padding:12px 22px;
+
+    border-radius:6px;
+
     cursor:pointer;
-    font-size:15px;
-    font-weight:600;
+
+    font-size:14px;
+    width: 10vw;
+
 }
 
-.active-tab{
-    background:#2563eb !important;
-    color:white;
+
+
+.add-btn:hover {
+
+    background:#5d3c54;
+
 }
 
-.add-btn{
-    margin-left:auto;
-    background:#16a34a !important;
-    color:white;
-}
 
-.table-container{
+
+
+
+/* ==================================
+             TABS
+================================== */
+
+
+.tabs {
+
     background:white;
+
+    border:1px solid #ddd;
+
+    padding:8px;
+
     border-radius:10px;
-    box-shadow:0 2px 5px rgba(0,0,0,.1);
+
+    display:flex;
+
+    gap:10px;
+
+    width:max-content;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.tabs button {
+
+    border:none;
+
+    background:#f5f5f5;
+
+    padding:12px 25px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    color:#555;
+
+    font-size:14px;
+
+}
+
+
+
+.tabs button:hover {
+
+    color:#714B67;
+
+}
+
+
+
+.tabs .tab-active {
+
+    background:#714B67;
+
+    color:white;
+
+}
+
+
+
+
+
+
+
+/* ==================================
+          SUMMARY CARDS
+================================== */
+
+
+.summary {
+
+    display:flex;
+    justify-content: space-evenly;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.summary-card {
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    padding:22px;
+    
+    width: 25vw;
+
+}
+
+
+
+.summary-card h3 {
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.summary-card p {
+
+    font-size:32px;
+
+    color:#714B67;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+
+
+/* ==================================
+             TABLE
+================================== */
+
+
+.table-box {
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
     overflow:hidden;
+
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-}
 
-th{
-    background:#f3f4f6;
-    padding:15px;
-    text-align:left;
-}
 
-td{
-    padding:18px 15px;
-    border-top:1px solid #e5e7eb;
-}
+.box-title {
 
-.status{
-    padding:8px 20px;
-    border-radius:20px;
+    padding:18px;
+
+    font-size:18px;
+
     font-weight:600;
+
+    color:#333;
+
+    border-bottom:1px solid #ddd;
+
 }
 
-.active{
-    background:#dcfce7;
-    color:#166534;
+
+
+.table-box table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
 }
 
-.inactive{
-    background:#f3f4f6;
-    color:#444;
-}
 
-.note{
-    margin-top:40px;
-    border-top:1px solid #ddd;
-    padding-top:25px;
+
+.table-box th {
+
+    background:#fafafa;
+
     color:#666;
-    font-size:15px;
+
+    text-align:left;
+
+    padding:15px;
+
+    font-size:14px;
+
+}
+
+
+
+.table-box td {
+
+    padding:15px;
+
+    border-top:1px solid #eee;
+
+    color:#444;
+
+}
+
+
+
+.table-box tr:hover {
+
+    background:#faf7fa;
+
+}
+
+
+
+
+
+
+
+/* ==================================
+             STATUS
+================================== */
+
+
+.status {
+
+    padding:5px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+}
+
+
+
+.active-status {
+
+    background:#e6f5e9;
+
+    color:#2e7d32;
+
+}
+
+
+
+.inactive-status {
+
+    background:#fde8e8;
+
+    color:#c62828;
+
+}
+
+
+
+
+
+
+
+/* ==================================
+          EMPLOYEE CARDS
+================================== */
+
+
+.employee-grid {
+
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+   
+
+    gap:5px;
+
+}
+
+
+
+.employee-card {
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    padding:25px;
+    width: 20vw;
+
+}
+
+
+
+.employee-card:hover {
+
+    transform:translateY(-3px);
+
+}
+
+
+
+.avatar {
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:#714B67;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:bold;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.employee-card h3 {
+
+    color:#333;
+
+    font-size:17px;
+
+}
+
+
+
+.employee-card p {
+
+    margin-top:8px;
+
+    color:#777;
+
+}
+
+
+
+
+
+
+/* ==================================
+        RESPONSIVE DESIGN
+================================== */
+
+
+
+/* Large Desktop */
+
+@media (min-width:1200px){
+
+
+    .summary{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+
+
+    .employee-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+
+
+    .org-content{
+
+        padding:35px;
+
+    }
+
+
+}
+
+
+
+
+
+/* ==================================
+            TABLET VIEW
+       768px - 1199px
+================================== */
+
+
+@media (max-width:1199px) and (min-width:768px){
+
+
+
+    .org-content{
+
+        padding:25px;
+
+    }
+
+
+
+
+    .org-header h1{
+
+        font-size:22px;
+
+    }
+
+
+
+
+    .summary{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:15px;
+
+    }
+
+
+
+
+    
+
+
+
+
+    .tabs button{
+
+        padding:11px 20px;
+
+    }
+
+
+
+
+    .table-box{
+
+        overflow-x:auto;
+
+    }
+
+
+
+
+    .table-box table{
+
+        min-width:700px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* ==================================
+            MOBILE VIEW
+             Below 768px
+================================== */
+
+
+@media(max-width:767px){
+
+
+
+    .org-content{
+
+        padding:15px;
+
+    }
+
+
+
+
+
+    /* Page Header */
+
+
+    .org-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+
+
+
+    .org-header h1{
+
+        font-size:20px;
+
+    }
+
+
+
+
+
+    .add-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+
+
+
+
+
+
+    /* Tabs */
+
+
+    .tabs{
+
+        width:100%;
+
+        overflow-x:auto;
+
+        display:flex;
+
+        scrollbar-width:none;
+
+    }
+
+
+
+    .tabs::-webkit-scrollbar{
+
+        display:none;
+
+    }
+
+
+
+    .tabs button{
+
+        flex-shrink:0;
+
+        padding:10px 18px;
+
+    }
+
+
+
+
+
+
+
+    /* Summary Cards */
+
+
+    .summary{
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+
+    }
+
+
+
+
+    .summary-card{
+
+        padding:18px;
+
+    }
+
+
+
+    .summary-card p{
+
+        font-size:28px;
+
+    }
+
+
+
+
+
+
+
+    /* Tables */
+
+
+    .table-box{
+
+        overflow-x:auto;
+
+        border-radius:8px;
+
+    }
+
+
+
+    .table-box table{
+
+        min-width:650px;
+
+    }
+
+
+
+    .box-title{
+
+        font-size:16px;
+
+        padding:15px;
+
+    }
+
+
+
+
+
+
+
+    /* Employee Cards */
+
+
+    .employee-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+        gap:15px;
+
+    }
+
+
+
+    .employee-card{
+
+        padding:20px;
+
+    }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+/* ==================================
+          SMALL PHONES
+          Below 400px
+================================== */
+
+
+@media(max-width:400px){
+
+
+
+    .org-content{
+
+        padding:10px;
+
+    }
+
+
+
+    .org-header h1{
+
+        font-size:18px;
+
+    }
+
+
+
+    .tabs button{
+
+        padding:9px 15px;
+
+        font-size:13px;
+
+    }
+
+
+
+    .summary-card p{
+
+        font-size:24px;
+
+    }
+
+
+
+    .employee-card h3{
+
+        font-size:15px;
+
+    }
+
+
+
 }

@@ -1,13 +1,31 @@
 import React, {useState} from "react";
-import "./ResourceBooking.css";
+import {useNavigate} from "react-router-dom";
+import "./CSS/ResourceBooking.css";
 
 
 const ResourceBooking = () => {
 
 
+const navigate = useNavigate();
+
+
+
+const handleLogout = ()=>{
+
+    localStorage.removeItem("token");
+
+    navigate("/login");
+
+};
+
+
+
+
 const [resource,setResource] = useState(
 "Conference Room B2"
 );
+
+
 
 
 
@@ -27,6 +45,7 @@ status:"Upcoming"
 
 
 
+
 const [form,setForm]=useState({
 
 start:"",
@@ -37,7 +56,10 @@ user:""
 
 
 
+
+
 const [message,setMessage]=useState("");
+
 
 
 
@@ -62,8 +84,6 @@ setForm({
 
 
 
-// overlap checking
-
 const checkOverlap=(start,end)=>{
 
 
@@ -82,6 +102,7 @@ end > booking.start
 
 
 };
+
 
 
 
@@ -111,6 +132,8 @@ return;
 
 
 
+
+
 const newBooking={
 
 
@@ -128,6 +151,8 @@ status:"Upcoming"
 
 
 };
+
+
 
 
 
@@ -154,6 +179,7 @@ end:"",
 user:""
 
 });
+
 
 
 };
@@ -200,16 +226,224 @@ item
 
 
 
+
+
+
 return(
+
+
+<div className="dashboard">
+
+
+
+{/* SIDEBAR */}
+
+
+<div className="sidebar">
+
+
+
+<div className="logo">
+
+<h2>
+AF
+</h2>
+
+</div>
+
+
+
+
+
+<button onClick={()=>navigate("/dashboard")}>
+
+Dashboard
+
+</button>
+
+
+
+
+
+<button onClick={()=>navigate("/organization")}>
+
+Organization Setup
+
+</button>
+
+
+
+
+
+<button onClick={()=>navigate("/assets")}>
+
+Assets
+
+</button>
+
+
+
+
+
+
+<button onClick={()=>navigate("/allocation")}>
+
+Allocation & Transfer
+
+</button>
+
+
+
+
+
+
+
+<button 
+
+className="active"
+
+onClick={()=>navigate("/resource")}
+
+>
+
+Resource Booking
+
+</button>
+
+
+
+
+
+
+
+<button onClick={()=>navigate("/maintenance")}>
+
+Maintenance
+
+</button>
+
+
+
+
+
+
+
+<button onClick={()=>navigate("/audit")}>
+
+Audit
+
+</button>
+
+
+
+
+
+
+<button>
+
+Reports
+
+</button>
+
+
+
+
+
+
+<button>
+
+Notifications
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* MAIN CONTENT */}
+
+
+<div className="main">
+
+
+
+
+
+
+
+{/* TOPBAR */}
+
+
+
+<div className="header">
+
+
+
+<h1>
+
+AssetFlow
+
+</h1>
+
+
+
+
+
+<button
+
+className="logout-btn"
+
+onClick={handleLogout}
+
+>
+
+Logout
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* RESOURCE PAGE */}
+
 
 
 <div className="resource-container">
 
 
 
+
+
 <h1>
+
 Resource Booking
+
 </h1>
+
+
+
+
 
 
 
@@ -218,8 +452,12 @@ Resource Booking
 
 
 <label>
+
 Resource
+
 </label>
+
+
 
 
 <select
@@ -246,10 +484,12 @@ Projector - Hall
 </option>
 
 
+
 </select>
 
 
 </div>
+
 
 
 
@@ -263,8 +503,12 @@ Projector - Hall
 
 
 <h2>
+
 {resource} - Tue, 7 Jul
+
 </h2>
+
+
 
 
 
@@ -272,17 +516,28 @@ Projector - Hall
 
 
 
+
+
 {
+
 [
+
 "09:00",
+
 "10:00",
+
 "11:00",
+
 "12:00",
+
 "01:00"
+
 ].map(time=>(
 
 
+
 <div className="time-row" key={time}>
+
 
 
 <div className="time">
@@ -294,7 +549,11 @@ Projector - Hall
 
 
 
+
 <div className="slot">
+
+
+
 
 
 {
@@ -302,11 +561,17 @@ Projector - Hall
 bookings.map((booking)=>(
 
 
+
 booking.start===time &&
 
-<div 
+
+
+<div
+
 className={`booking ${booking.status}`}
+
 key={booking.id}
+
 >
 
 
@@ -320,6 +585,7 @@ Booked - {booking.user}
 </div>
 
 
+
 ))
 
 
@@ -327,19 +593,29 @@ Booked - {booking.user}
 
 
 
+
+
 </div>
 
 
 
+
+
 </div>
+
 
 
 ))
+
 
 }
 
 
 
+
+
+
+
 </div>
 
 
@@ -352,86 +628,139 @@ Booked - {booking.user}
 
 
 
-<form 
+
+<form
+
 className="booking-form"
+
 onSubmit={bookSlot}
+
 >
 
 
 
+
+
 <h2>
+
 Book a Slot
+
 </h2>
 
 
 
 
+
+
+
+
 <label>
+
 Requested By
+
 </label>
 
 
+
+
 <input
+
 
 name="user"
 
+
 value={form.user}
 
+
 onChange={handleChange}
+
 
 placeholder="Employee name"
 
+
 />
 
 
 
 
 
+
+
+
+
 <label>
+
 Start Time
+
 </label>
+
+
 
 
 <input
 
+
 type="time"
+
 
 name="start"
 
+
 value={form.start}
+
 
 onChange={handleChange}
 
+
 />
+
+
+
+
 
 
 
 
 
 <label>
+
 End Time
+
 </label>
+
+
 
 
 <input
 
+
 type="time"
+
 
 name="end"
 
+
 value={form.end}
+
 
 onChange={handleChange}
 
+
 />
+
+
 
 
 
 
 
 <button>
+
 Book Slot
+
 </button>
+
+
 
 
 
@@ -443,8 +772,12 @@ Book Slot
 
 
 
+
+
 {
+
 message &&
+
 
 <div className="message">
 
@@ -452,7 +785,10 @@ message &&
 
 </div>
 
+
 }
+
+
 
 
 
@@ -463,38 +799,55 @@ message &&
 <div className="history">
 
 
+
+
+
 <h2>
+
 Booking History
+
 </h2>
+
+
+
+
 
 
 
 
 <table>
 
+
 <thead>
 
+
 <tr>
+
 
 <th>
 Resource
 </th>
 
+
 <th>
 User
 </th>
+
 
 <th>
 Time
 </th>
 
+
 <th>
 Status
 </th>
 
+
 <th>
 Action
 </th>
+
 
 
 </tr>
@@ -504,12 +857,19 @@ Action
 
 
 
+
+
+
+
 <tbody>
+
+
 
 
 {
 
 bookings.map(item=>(
+
 
 
 <tr key={item.id}>
@@ -520,9 +880,12 @@ bookings.map(item=>(
 </td>
 
 
+
 <td>
 {item.user}
 </td>
+
+
 
 
 <td>
@@ -532,22 +895,34 @@ bookings.map(item=>(
 </td>
 
 
+
+
 <td>
 {item.status}
 </td>
 
 
+
+
+
 <td>
 
 
+
 {
+
 item.status!=="Cancelled" &&
+
+
 
 <button
 
+
 className="cancel"
 
+
 onClick={()=>cancelBooking(item.id)}
+
 
 >
 
@@ -555,13 +930,20 @@ Cancel
 
 </button>
 
+
+
 }
+
 
 
 </td>
 
 
+
+
+
 </tr>
+
 
 
 ))
@@ -570,12 +952,25 @@ Cancel
 }
 
 
+
+
+
+
 </tbody>
+
+
+
+
 
 
 </table>
 
 
+
+
+
+
+
 </div>
 
 
@@ -584,13 +979,30 @@ Cancel
 
 
 
+
+
 </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
 
 
 )
 
 
 }
+
 
 
 export default ResourceBooking;

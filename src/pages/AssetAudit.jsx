@@ -1,7 +1,18 @@
 import React, { useState } from "react";
-import "./AssetAudit.css";
+import { useNavigate } from "react-router-dom";
+import "./CSS/AssetAudit.css";
 
 const AssetAudit = () => {
+
+  const navigate = useNavigate();
+
+const handleLogout = () => {
+
+    localStorage.removeItem("token");
+
+    navigate("/login");
+
+};
 
   const [auditCycles, setAuditCycles] = useState([
     {
@@ -154,7 +165,77 @@ const AssetAudit = () => {
 
 return (
 
-<div className="audit-container">
+<div className="dashboard">
+
+    {/* SIDEBAR */}
+
+    <div className="sidebar">
+
+        <div className="logo">
+            <h2>AF</h2>
+        </div>
+
+        <button onClick={() => navigate("/dashboard")}>
+            Dashboard
+        </button>
+
+        <button onClick={() => navigate("/organization")}>
+            Organization Setup
+        </button>
+
+        <button onClick={() => navigate("/assets")}>
+            Assets
+        </button>
+
+        <button onClick={() => navigate("/allocation")}>
+            Allocation & Transfer
+        </button>
+
+        <button onClick={() => navigate("/resource")}>
+            Resource Booking
+        </button>
+
+        <button onClick={() => navigate("/maintenance")}>
+            Maintenance
+        </button>
+
+        <button
+            className="active"
+            onClick={() => navigate("/audit")}
+        >
+            Audit
+        </button>
+
+        <button>
+            Reports
+        </button>
+
+        <button>
+            Notifications
+        </button>
+
+    </div>
+
+    {/* MAIN */}
+
+    <div className="main">
+
+        {/* TOPBAR */}
+
+        <div className="header">
+
+            <h1>AssetFlow</h1>
+
+            <button
+                className="logout-btn"
+                onClick={handleLogout}
+            >
+                Logout
+            </button>
+
+        </div>
+
+        <div className="audit-container">
 
 
 <h1>
@@ -609,11 +690,13 @@ Close Audit Cycle
 
 
 
+        </div>
+
+    </div>
+
 </div>
 
-
-)
-
+);
 
 }
 

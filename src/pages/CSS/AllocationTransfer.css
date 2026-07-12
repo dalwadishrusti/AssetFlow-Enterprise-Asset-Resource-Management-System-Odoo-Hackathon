@@ -1,0 +1,597 @@
+/* ==============================
+   GLOBAL
+================================ */
+
+*{
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+
+body{
+    margin:0;
+    background:#f5f5f5;
+    color:#374151;
+}
+
+
+/* ==============================
+   DASHBOARD LAYOUT
+================================ */
+
+.dashboard{
+
+    display:flex;
+    min-height:100vh;
+
+}
+
+
+
+/* ==============================
+   SIDEBAR (ODOO STYLE)
+================================ */
+
+
+.sidebar{
+
+    width:240px;
+    background:#212529;
+    min-height:100vh;
+    padding:15px 12px;
+    position:fixed;
+    left:0;
+    top:0;
+
+}
+
+
+
+.logo{
+
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:15px;
+
+}
+
+
+.logo h2{
+
+    background:#714B67;
+    color:white;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+
+}
+
+
+
+
+.sidebar button{
+
+    width:100%;
+    padding:12px 15px;
+    margin-bottom:6px;
+
+    background:transparent;
+    color:#dee2e6;
+
+    border:none;
+    border-radius:6px;
+
+    text-align:left;
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.2s;
+
+}
+
+
+
+.sidebar button:hover{
+
+    background:#343a40;
+    color:white;
+
+}
+
+
+
+.sidebar button.active{
+
+    background:#714B67;
+    color:white;
+
+}
+
+
+
+/* ==============================
+   MAIN AREA
+================================ */
+
+
+.main{
+
+    margin-left:240px;
+    width:calc(100% - 240px);
+
+}
+
+
+
+/* ==============================
+   TOP BAR
+================================ */
+
+
+.header{
+
+
+    height:65px;
+
+    background:white;
+
+    border-bottom:1px solid #ddd;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 25px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+
+
+}
+
+
+
+.header h1{
+
+    font-size:22px;
+    font-weight:600;
+    color:#374151;
+
+}
+
+
+
+.logout-btn{
+
+    background:#dc3545;
+
+    color:white;
+
+    border:none;
+
+    padding:9px 18px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+}
+
+
+
+.logout-btn:hover{
+
+    background:#bb2d3b;
+
+}
+
+
+
+
+
+/* ==============================
+   PAGE CONTAINER
+================================ */
+
+
+.allocation-container{
+
+
+    padding:25px;
+
+
+}
+
+
+
+
+.allocation-container h2{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+    color:#343a40;
+
+
+}
+
+
+
+
+/* ==============================
+   CARDS
+================================ */
+
+
+.asset-select,
+.transfer-form,
+.history-section{
+
+
+    background:white;
+
+    border:1px solid #dee2e6;
+
+    border-radius:8px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+/* ==============================
+   FORM
+================================ */
+
+
+label{
+
+
+    display:block;
+
+    font-weight:500;
+
+    margin-bottom:7px;
+
+    color:#495057;
+
+
+}
+
+
+
+
+select,
+input,
+textarea{
+
+
+    width:100%;
+
+    padding:10px 12px;
+
+    border:1px solid #ced4da;
+
+    border-radius:5px;
+
+    background:white;
+
+    font-size:14px;
+
+
+}
+
+
+
+select:focus,
+input:focus,
+textarea:focus{
+
+
+    outline:none;
+
+    border-color:#714B67;
+
+    box-shadow:0 0 0 2px rgba(113,75,103,.15);
+
+}
+
+
+
+
+textarea{
+
+    height:90px;
+
+    resize:none;
+
+}
+
+
+
+
+
+.form-group{
+
+    margin-bottom:18px;
+
+}
+
+
+
+
+
+/* ==============================
+   ASSET INFO CARD
+================================ */
+
+
+.asset-info{
+
+
+    background:#f8f9fa;
+
+    border-left:4px solid #714B67;
+
+    padding:15px;
+
+    margin-bottom:20px;
+
+    border-radius:5px;
+
+
+}
+
+
+
+.asset-info h3{
+
+    margin-top:0;
+
+    font-size:17px;
+
+}
+
+.asset-info p{
+    margin-top: 12px;
+    margin-bottom: 22px;
+    text-align: left;
+    color: #714B67;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+
+
+
+/* ==============================
+   BUTTON
+================================ */
+
+
+button[type="submit"]{
+
+
+    background:#714B67;
+
+    color:white;
+
+    border:none;
+
+    padding:11px 22px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-weight:500;
+
+
+}
+
+
+
+button[type="submit"]:hover{
+
+    background:#5d3d55;
+
+}
+
+
+
+
+/* ==============================
+   MESSAGE
+================================ */
+
+
+.message{
+
+
+    background:#d1e7dd;
+
+    color:#0f5132;
+
+    padding:12px 15px;
+
+    border-radius:5px;
+
+    border:1px solid #badbcc;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+/* ==============================
+   TABLE (ODOO LIST STYLE)
+================================ */
+
+
+.history-section{
+
+    overflow:auto;
+
+}
+
+
+
+table{
+
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+
+}
+
+
+
+thead{
+
+    background:#f8f9fa;
+
+}
+
+
+
+th{
+
+
+    text-align:left;
+
+    padding:12px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    border-bottom:2px solid #dee2e6;
+
+
+}
+
+
+
+td{
+
+
+    padding:12px;
+
+    border-bottom:1px solid #eee;
+
+    font-size:14px;
+
+
+}
+
+
+
+tbody tr:hover{
+
+
+    background:#fafafa;
+
+
+}
+
+
+
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+
+@media(max-width:900px){
+
+
+.sidebar{
+
+    width:70px;
+
+}
+
+
+.sidebar button{
+
+    font-size:0;
+
+    text-align:center;
+
+}
+
+
+.main{
+
+    margin-left:70px;
+
+    width:calc(100% - 70px);
+
+}
+
+
+
+}
+
+
+@media(max-width:600px){
+
+
+.dashboard{
+
+    display:block;
+
+}
+
+
+.sidebar{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:auto;
+
+}
+
+
+.main{
+
+    margin-left:0;
+
+    width:100%;
+
+}
+
+
+}
