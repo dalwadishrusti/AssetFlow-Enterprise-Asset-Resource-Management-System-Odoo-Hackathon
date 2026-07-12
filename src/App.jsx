@@ -4,6 +4,10 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import OrganizationSetup from "./pages/OrganizationSetup";
 import Assets from "./pages/Assets";
+import AllocationTransfer from "./pages/AllocationTransfer";
+import ResourceBooking from "./pages/ResourceBooking";
+import MaintenanceManagement from "./pages/MaintenanceManagement";
+import AssetAudit from "./pages/AssetAudit";
 
 function App() {
   return (
@@ -21,6 +25,11 @@ function App() {
         />
 
         <Route path="/assets" element={<Assets />} />
+
+        <Route path="/allocation" element={<AllocationTransfer />} />
+        <Route path="/resource" element={<ResourceBooking />} />
+        <Route path="/maintenance" element={<MaintenanceManagement />} />
+        <Route path="/audit" element={<AssetAudit />} />
 
       </Routes>
 
