@@ -1,6 +1,6 @@
 import "./CSS/OrganizationSetup.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 function OrganizationSetup() {
@@ -8,10 +8,85 @@ function OrganizationSetup() {
     const navigate = useNavigate();
 
     const [activeTab, setActiveTab] = useState("departments");
+    const [departments, setDepartments] = useState(() => {
+        const savedData = localStorage.getItem("departments");
+
+        if (savedData) {
+            return JSON.parse(savedData);
+        }
+
+        return [
+            {
+                id: 1,
+                name: "Engineering",
+                head: "Aditi Rao",
+                employees: 24,
+                status: "Active"
+            },
+            {
+                id: 2,
+                name: "Facilities",
+                head: "Rohan Mehta",
+                employees: 12,
+                status: "Active"
+            },
+            {
+                id: 3,
+                name: "Field Operations",
+                head: "Sana Iqbal",
+                employees: 8,
+                status: "Inactive"
+            }
+        ];
+    });
+    useEffect(() => {
+        localStorage.setItem(
+            "departments",
+            JSON.stringify(departments)
+        );
+    }, [departments]);
 
 
     const handleLogout = () => {
         navigate("/");
+    };
+
+    const [showModal, setShowModal] = useState(false);
+
+    const [newDepartment, setNewDepartment] = useState({
+        name: "",
+        head: "",
+        employees: "",
+        status: "Active",
+    });
+
+    const addDepartment = () => {
+
+        if (
+            newDepartment.name === "" ||
+            newDepartment.head === "" ||
+            newDepartment.employees === ""
+        ) {
+            alert("Please fill all fields");
+            return;
+        }
+
+        setDepartments([
+            ...departments,
+            {
+                id: Date.now(),
+                ...newDepartment,
+            },
+        ]);
+
+        setNewDepartment({
+            name: "",
+            head: "",
+            employees: "",
+            status: "Active",
+        });
+
+        setShowModal(false);
     };
 
 
@@ -61,14 +136,10 @@ function OrganizationSetup() {
                 </button>
 
 
-                <button>
-                    Reports
-                </button>
+                <button onClick={()=>navigate("/report")}>Reports</button>
 
 
-                <button>
-                    Notifications
-                </button>
+                <button onClick={() => navigate("/notification")}>Notifications</button>
 
 
             </div>
@@ -125,10 +196,11 @@ function OrganizationSetup() {
                         </h1>
 
 
-                        <button className="add-btn">
-
+                        <button
+                            className="add-btn"
+                            onClick={() => setShowModal(true)}
+                        >
                             + Add
-
                         </button>
 
 
@@ -239,9 +311,9 @@ function OrganizationSetup() {
                                         Total Departments
                                     </h3>
 
-                                    <p>
-                                        12
-                                    </p>
+                                <p>
+                                    12
+                                </p>
 
                                 </div>
 
@@ -253,9 +325,9 @@ function OrganizationSetup() {
                                         Active Departments
                                     </h3>
 
-                                    <p>
-                                        10
-                                    </p>
+                                <p>
+                                    10
+                                </p>
 
                                 </div>
 
@@ -267,11 +339,11 @@ function OrganizationSetup() {
                                         Employees
                                     </h3>
 
-                                    <p>
-                                        86
-                                    </p>
+                                <p>
+                                    86
+                                </p>
 
-                                </div>
+                            </div>
 
 
                             </div>
@@ -325,79 +397,79 @@ function OrganizationSetup() {
                                     <tbody>
 
 
-                                        <tr>
+                                <tr>
 
-                                            <td>
-                                                Engineering
-                                            </td>
+                                    <td>
+                                        Engineering
+                                    </td>
 
-                                            <td>
-                                                Aditi Rao
-                                            </td>
+                                    <td>
+                                        Aditi Rao
+                                    </td>
 
-                                            <td>
-                                                24
-                                            </td>
+                                    <td>
+                                        24
+                                    </td>
 
-                                            <td>
-                                                <span className="status active-status">
-                                                    Active
-                                                </span>
-                                            </td>
+                                    <td>
+                                        <span className="status active-status">
+                                            Active
+                                        </span>
+                                    </td>
 
-                                        </tr>
-
-
-
-
-
-                                        <tr>
-
-                                            <td>
-                                                Facilities
-                                            </td>
-
-                                            <td>
-                                                Rohan Mehta
-                                            </td>
-
-                                            <td>
-                                                12
-                                            </td>
-
-                                            <td>
-                                                <span className="status active-status">
-                                                    Active
-                                                </span>
-                                            </td>
-
-                                        </tr>
+                                </tr>
 
 
 
 
 
-                                        <tr>
+                                <tr>
 
-                                            <td>
-                                                Field Operations
-                                            </td>
+                                    <td>
+                                        Facilities
+                                    </td>
 
-                                            <td>
-                                                Sana Iqbal
-                                            </td>
+                                    <td>
+                                        Rohan Mehta
+                                    </td>
 
-                                            <td>
-                                                8
-                                            </td>
+                                    <td>
+                                        12
+                                    </td>
 
-                                            <td>
-                                                <span className="status inactive-status">
-                                                    Inactive
-                                                </span>
-                                            </td>
+                                    <td>
+                                        <span className="status active-status">
+                                            Active
+                                        </span>
+                                    </td>
 
-                                        </tr>
+                                </tr>
+
+
+
+
+
+                                <tr>
+
+                                    <td>
+                                        Field Operations
+                                    </td>
+
+                                    <td>
+                                        Sana Iqbal
+                                    </td>
+
+                                    <td>
+                                        8
+                                    </td>
+
+                                    <td>
+                                        <span className="status inactive-status">
+                                            Inactive
+                                        </span>
+                                    </td>
+
+                                </tr>
 
 
 
@@ -635,6 +707,83 @@ function OrganizationSetup() {
 
 
             </div>
+
+            {
+                showModal && (
+
+                    <div className="modal-overlay">
+
+                        <div className="modal-box">
+
+                            <h2>Add Department</h2>
+
+                            <input
+                                type="text"
+                                placeholder="Department Name"
+                                value={newDepartment.name}
+                                onChange={(e) =>
+                                    setNewDepartment({
+                                        ...newDepartment,
+                                        name: e.target.value
+                                    })
+                                }
+                            />
+
+                            <input
+                                type="text"
+                                placeholder="Department Head"
+                                value={newDepartment.head}
+                                onChange={(e) =>
+                                    setNewDepartment({
+                                        ...newDepartment,
+                                        head: e.target.value
+                                    })
+                                }
+                            />
+
+                            <input
+                                type="number"
+                                placeholder="Employees"
+                                value={newDepartment.employees}
+                                onChange={(e) =>
+                                    setNewDepartment({
+                                        ...newDepartment,
+                                        employees: e.target.value
+                                    })
+                                }
+                            />
+
+                            <select
+                                value={newDepartment.status}
+                                onChange={(e) =>
+                                    setNewDepartment({
+                                        ...newDepartment,
+                                        status: e.target.value
+                                    })
+                                }
+                            >
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+
+                            <div className="modal-buttons">
+
+                                <button onClick={() => setShowModal(false)}>
+                                    Cancel
+                                </button>
+
+                                <button onClick={addDepartment}>
+                                    Save
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                )
+            }
 
 
         </div>

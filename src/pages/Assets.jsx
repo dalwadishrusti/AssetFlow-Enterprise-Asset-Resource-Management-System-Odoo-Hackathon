@@ -192,9 +192,10 @@ function Assets() {
                 <button onClick={() => navigate("/audit")}>
                     Audit
                 </button>
+                
 
-                <button>Reports</button>
-                <button>Notifications</button>
+               <button onClick={()=>navigate("/report")}>Reports</button>
+                <button onClick={() => navigate("/notification")}>Notifications</button>
 
             </div>
 

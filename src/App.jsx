@@ -8,6 +8,9 @@ import AllocationTransfer from "./pages/AllocationTransfer";
 import ResourceBooking from "./pages/ResourceBooking";
 import MaintenanceManagement from "./pages/MaintenanceManagement";
 import AssetAudit from "./pages/AssetAudit";
+import Notifications from "./pages/Notification";
+import Report from "./pages/Report";
+
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
         <Route path="/resource" element={<ResourceBooking />} />
         <Route path="/maintenance" element={<MaintenanceManagement />} />
         <Route path="/audit" element={<AssetAudit />} />
+        <Route path="/notification" element={<Notifications />} />
+        <Route path="/report" element={<Report />} />
+
 
       </Routes>
 
