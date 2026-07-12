@@ -1,4 +1,4 @@
-// import "./Assets.css";
+import "./CSS/Assets.css";
 import { useNavigate } from "react-router-dom";
 
 function Assets() {
@@ -16,7 +16,7 @@ function Assets() {
 
                 <div className="logo">
                     <h2>AF</h2>
-                    <p>AssetFlow</p>
+                    
                 </div>
 
                 <button onClick={() => navigate("/dashboard")}>
