@@ -1,4 +1,4 @@
-import "./OrganizationSetup.css";
+// import "./OrganizationSetup.css";
 import { useNavigate } from "react-router-dom";
 
 function OrganizationSetup() {

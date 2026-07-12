@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./CSS/Login.css";
 import users from "../data/user.json";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [login, setLogin] = useState(true);
@@ -11,6 +12,8 @@ function Login() {
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
 
@@ -29,7 +32,9 @@ function Login() {
 
     if (user) {
 
-      alert("Welcome " + user.name);
+      localStorage.setItem("currentUser", JSON.stringify(user));
+
+      navigate("/dashboard");
 
     }
     else {

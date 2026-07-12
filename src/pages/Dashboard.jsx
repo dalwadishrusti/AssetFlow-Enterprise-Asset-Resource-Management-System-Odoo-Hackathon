@@ -1,24 +1,34 @@
-import "./Dashboard.css";
+import "./CSS/Dashboard.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Dashboard() {
 
     const navigate = useNavigate();
 
-    const handleLogout = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+      const handleLogout = () => {
         navigate("/");
     };
 
+
+
     return (
-        <div className="dashboard">
+        <div className={`dashboard ${menuOpen ? "menu-open" : ""}`}>
 
             {/* Sidebar */}
 
             <div className="sidebar">
 
-                <div className="logo">
+                <div
+                    className="logo"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                >
+
                     <h2>AF</h2>
-                    <p>AssetFlow</p>
+
+
                 </div>
 
                 <button className="active">Dashboard</button>
