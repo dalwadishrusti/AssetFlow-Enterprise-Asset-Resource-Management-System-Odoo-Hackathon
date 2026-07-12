@@ -24,13 +24,18 @@ const handleLogout = () => {
 
         {
             id: "AF-0078",
-            name: "Forklift",
+            name: "Computer",
             status: "Available"
         },
 
         {
             id: "AF-897",
             name: "Printer",
+            status: "Available"
+        },
+         {
+            id: "AF-127",
+            name: "Keyboard",
             status: "Available"
         }
 
@@ -326,13 +331,9 @@ const handleLogout = () => {
             Audit
         </button>
 
-        <button>
-            Reports
-        </button>
+       <button onClick={()=>navigate("/report")}>Reports</button>
 
-        <button>
-            Notifications
-        </button>
+        <button onClick={() => navigate("/notification")}>Notifications</button>
 
     </div>
 

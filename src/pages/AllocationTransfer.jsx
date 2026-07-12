@@ -312,15 +312,10 @@ const AllocationTransfer = () => {
 
 
 
-                <button>
-                    Reports
-                </button>
+                <button onClick={()=>navigate("/report")}>Reports</button>
 
 
-
-                <button>
-                    Notifications
-                </button>
+                <button onClick={() => navigate("/notification")}>Notifications</button>
 
 
 

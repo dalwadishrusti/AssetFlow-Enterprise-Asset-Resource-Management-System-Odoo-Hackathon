@@ -1,0 +1,340 @@
+:root {
+    --primary: #875A7B;
+    --primary-light: #a37996;
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --text: #303030;
+    --border: #e4e4e4;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    font-family:Inter,sans-serif;
+}
+
+.resource-page{
+    padding:30px;
+}
+
+.page-title{
+    color:#333;
+    margin-bottom:25px;
+    font-size:28px;
+    font-weight:600;
+}
+
+.top-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-bottom:25px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:16px;
+    padding:22px;
+    border:1px solid var(--border);
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+}
+
+.card-header{
+    margin-bottom:20px;
+}
+
+.card h3{
+    color:#444;
+    font-size:18px;
+    font-weight:600;
+}
+
+.chart-card{
+    height:320px;
+}
+
+.bar-chart{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-evenly;
+    height:220px;
+    border-bottom:2px solid #ddd;
+    padding-bottom:8px;
+}
+
+.bar{
+    width:42px;
+    background:linear-gradient(
+        180deg,
+        var(--primary-light),
+        var(--primary)
+    );
+    border-radius:10px 10px 0 0;
+    transition:.3s;
+}
+
+.bar:hover{
+    transform:translateY(-6px);
+}
+
+.line-chart{
+    position:relative;
+    height:220px;
+}
+
+.line-chart svg{
+    width:100%;
+    height:100%;
+}
+
+.dot{
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--primary);
+    transform:translate(-50%,-50%);
+}
+
+.info-card ul{
+    list-style:none;
+    margin-top:10px;
+}
+
+.info-card li{
+    display:flex;
+    justify-content:space-between;
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}
+
+.info-card li:last-child{
+    border:none;
+}
+
+.info-card strong{
+    color:#333;
+}
+
+.info-card span{
+    color:#666;
+}
+
+.maintenance-card ul{
+    list-style:none;
+    margin:18px 0;
+}
+
+.maintenance-card li{
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+}
+
+.export-btn{
+    margin-top:20px;
+    padding:12px 24px;
+    border:none;
+    border-radius:10px;
+    background:var(--primary);
+    color:#fff;
+    font-size:15px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.export-btn:hover{
+    background:#704968;
+}
+
+@media(max-width:900px){
+
+.top-grid,
+.info-grid{
+    grid-template-columns:1fr;
+}
+
+.chart-card{
+    height:auto;
+}
+
+}
+
+
+
+
+.sidebar{
+
+    width:240px;
+    background:#212529;
+    min-height:100vh;
+    padding:15px 12px;
+    position:fixed;
+    left:0;
+    top:0;
+
+}
+
+
+
+.logo{
+
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:15px;
+
+}
+
+
+.logo h2{
+
+    background:#714B67;
+    color:white;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+
+}
+
+
+
+
+.sidebar button{
+
+    width:100%;
+    padding:12px 15px;
+    margin-bottom:6px;
+
+    background:transparent;
+    color:#dee2e6;
+
+    border:none;
+    border-radius:6px;
+
+    text-align:left;
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.2s;
+
+}
+
+
+
+.sidebar button:hover{
+
+    background:#343a40;
+    color:white;
+
+}
+
+
+
+.sidebar button.active{
+
+    background:#714B67;
+    color:white;
+
+}
+
+
+
+/* ==============================
+   MAIN AREA
+================================ */
+
+
+.main{
+
+    margin-left:240px;
+    width:calc(100% - 240px);
+
+}
+
+
+
+/* ==============================
+   TOP BAR
+================================ */
+
+
+.header{
+
+
+    height:65px;
+
+    background:white;
+
+    border-bottom:1px solid #ddd;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 25px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+
+
+}
+
+
+
+.header h1{
+
+    font-size:22px;
+    font-weight:600;
+    color:#374151;
+
+}
+
+
+
+.logout-btn{
+
+    background:#dc3545;
+
+    color:white;
+
+    border:none;
+
+    padding:9px 18px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+}
+
+
+
+.logout-btn:hover{
+
+    background:#bb2d3b;
+
+}
+

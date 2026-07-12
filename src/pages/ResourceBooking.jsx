@@ -1,107 +1,119 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CSS/ResourceBooking.css";
 
 
 const ResourceBooking = () => {
 
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
 
 
-const handleLogout = ()=>{
+    const handleLogout = () => {
 
-    localStorage.removeItem("token");
+        localStorage.removeItem("token");
 
-    navigate("/login");
+        navigate("/login");
 
-};
+    };
 
 
 
 
-const [resource,setResource] = useState(
-"Conference Room B2"
-);
+    const [resource, setResource] = useState(
+        "Conference Room B2"
+    );
 
 
 
 
 
-const [bookings,setBookings] = useState([
+    const [bookings, setBookings] = useState(() => {
 
-{
-id:1,
-resource:"Conference Room B2",
-user:"Procurement Team",
-start:"09:00",
-end:"10:00",
-status:"Upcoming"
-}
+        const savedBookings = localStorage.getItem("bookings");
 
-]);
+        if (savedBookings) {
+            return JSON.parse(savedBookings);
+        }
 
+        return [
+            {
+                id: 1,
+                resource: "Conference Room B2",
+                user: "Procurement Team",
+                start: "09:00",
+                end: "10:00",
+                status: "Upcoming"
+            }
+        ];
 
+    });
 
 
+    useEffect(() => {
 
-const [form,setForm]=useState({
+        localStorage.setItem(
+            "bookings",
+            JSON.stringify(bookings)
+        );
 
-start:"",
-end:"",
-user:""
+    }, [bookings]);
 
-});
 
 
 
 
+    const [form, setForm] = useState({
 
-const [message,setMessage]=useState("");
+        start: "",
+        end: "",
+        user: ""
 
+    });
 
 
 
 
 
-const handleChange=(e)=>{
+    const [message, setMessage] = useState("");
 
-setForm({
 
-...form,
 
-[e.target.name]:e.target.value
 
-});
 
 
-};
+    const handleChange = (e) => {
 
+        setForm({
 
+            ...form,
 
+            [e.target.name]: e.target.value
 
+        });
 
 
+    };
 
-const checkOverlap=(start,end)=>{
 
 
-return bookings.some((booking)=>{
 
 
-return (
 
-start < booking.end &&
-end > booking.start
+    const checkOverlap = (start, end) => {
 
-);
+        return bookings.some((booking) =>
 
+            booking.resource === resource &&
+            booking.status !== "Cancelled" &&
 
-});
+            start < booking.end &&
+            end > booking.start
 
+        );
 
-};
+    };
 
 
 
@@ -110,895 +122,898 @@ end > booking.start
 
 
 
-const bookSlot=(e)=>{
+    const bookSlot = (e) => {
 
-e.preventDefault();
+        e.preventDefault();
 
+        if (form.start >= form.end) {
 
+            setMessage("End time must be after Start time.");
 
-if(checkOverlap(form.start,form.end)){
+            return;
 
+        }
 
-setMessage(
-"Booking rejected! Slot overlaps with existing booking."
-);
+        if (
 
+            checkOverlap(form.start, form.end)) {
 
-return;
 
-}
+            setMessage(
+                "Booking rejected! Slot overlaps with existing booking."
+            );
 
 
+            return;
 
+        }
 
 
 
 
-const newBooking={
 
 
-id:Date.now(),
 
-resource,
+        const newBooking = {
 
-user:form.user,
 
-start:form.start,
+            id: Date.now(),
 
-end:form.end,
+            resource,
 
-status:"Upcoming"
+            user: form.user,
 
+            start: form.start,
 
-};
+            end: form.end,
 
+            status: "Upcoming"
 
 
+        };
 
 
-setBookings([
 
-...bookings,
 
-newBooking
 
-]);
+        setBookings([
 
+            ...bookings,
 
+            newBooking
 
-setMessage(
-"Slot booked successfully!"
-);
+        ]);
 
 
 
-setForm({
+        setMessage(
+            "Slot booked successfully!"
+        );
 
-start:"",
-end:"",
-user:""
 
-});
 
+        setForm({
 
+            start: "",
+            end: "",
+            user: ""
 
-};
+        });
 
 
 
+    };
 
 
 
 
 
-const cancelBooking=(id)=>{
 
 
-setBookings(
 
-bookings.map(item=>
+    const cancelBooking = (id) => {
 
-item.id===id
 
-?
+        setBookings(
 
-{
+            bookings.map(item =>
 
-...item,
+                item.id === id
 
-status:"Cancelled"
+                    ?
 
-}
+                    {
 
-:
+                        ...item,
 
-item
+                        status: "Cancelled"
 
-)
+                    }
 
-);
+                    :
 
+                    item
 
-};
+            )
 
+        );
 
 
+    };
 
 
 
 
 
 
-return(
 
 
-<div className="dashboard">
 
+    return (
 
 
-{/* SIDEBAR */}
+        <div className="dashboard">
 
 
-<div className="sidebar">
 
+            {/* SIDEBAR */}
 
 
-<div className="logo">
+            <div className="sidebar">
 
-<h2>
-AF
-</h2>
 
-</div>
 
+                <div className="logo">
 
+                    <h2>
+                        AF
+                    </h2>
 
+                </div>
 
 
-<button onClick={()=>navigate("/dashboard")}>
 
-Dashboard
 
-</button>
 
+                <button onClick={() => navigate("/dashboard")}>
 
+                    Dashboard
 
+                </button>
 
 
-<button onClick={()=>navigate("/organization")}>
 
-Organization Setup
 
-</button>
 
+                <button onClick={() => navigate("/organization")}>
 
+                    Organization Setup
 
+                </button>
 
 
-<button onClick={()=>navigate("/assets")}>
 
-Assets
 
-</button>
 
+                <button onClick={() => navigate("/assets")}>
 
+                    Assets
 
+                </button>
 
 
 
-<button onClick={()=>navigate("/allocation")}>
 
-Allocation & Transfer
 
-</button>
 
+                <button onClick={() => navigate("/allocation")}>
 
+                    Allocation & Transfer
 
+                </button>
 
 
 
 
-<button 
 
-className="active"
 
-onClick={()=>navigate("/resource")}
 
->
+                <button
 
-Resource Booking
+                    className="active"
 
-</button>
+                    onClick={() => navigate("/resource")}
 
+                >
 
+                    Resource Booking
 
+                </button>
 
 
 
 
-<button onClick={()=>navigate("/maintenance")}>
 
-Maintenance
 
-</button>
 
+                <button onClick={() => navigate("/maintenance")}>
 
+                    Maintenance
 
+                </button>
 
 
 
 
-<button onClick={()=>navigate("/audit")}>
 
-Audit
 
-</button>
 
+                <button onClick={() => navigate("/audit")}>
 
+                    Audit
 
+                </button>
 
 
 
-<button>
 
-Reports
 
-</button>
 
+                <button onClick={()=>navigate("/report")}>Reports</button>
 
 
 
 
+                <button onClick={() => navigate("/notification")}>Notifications</button>
 
-<button>
 
-Notifications
 
-</button>
 
 
+            </div>
 
 
 
-</div>
 
 
 
 
 
 
+            {/* MAIN CONTENT */}
 
 
+            <div className="main">
 
-{/* MAIN CONTENT */}
 
 
-<div className="main">
 
 
 
 
+                {/* TOPBAR */}
 
 
 
-{/* TOPBAR */}
+                <div className="header">
 
 
 
-<div className="header">
+                    <h1>
 
+                        AssetFlow
 
+                    </h1>
 
-<h1>
 
-AssetFlow
 
-</h1>
 
 
+                    <button
 
+                        className="logout-btn"
 
+                        onClick={handleLogout}
 
-<button
+                    >
 
-className="logout-btn"
+                        Logout
 
-onClick={handleLogout}
+                    </button>
 
->
 
-Logout
 
-</button>
 
 
+                </div>
 
 
 
-</div>
 
 
 
 
 
 
+                {/* RESOURCE PAGE */}
 
 
 
-{/* RESOURCE PAGE */}
+                <div className="resource-container">
 
 
 
-<div className="resource-container">
 
 
+                    <h1>
 
+                        Resource Booking
 
+                    </h1>
 
-<h1>
 
-Resource Booking
 
-</h1>
 
 
 
 
 
+                    <div className="resource-select">
 
 
+                        <label>
 
-<div className="resource-select">
+                            Resource
 
+                        </label>
 
-<label>
 
-Resource
 
-</label>
 
+                        <select
 
+                            value={resource}
 
+                            onChange={(e) => setResource(e.target.value)}
 
-<select
+                        >
 
-value={resource}
 
-onChange={(e)=>setResource(e.target.value)}
+                            <option>
+                                Conference Room B2
+                            </option>
 
->
 
+                            <option>
+                                Meeting Room A1
+                            </option>
 
-<option>
-Conference Room B2
-</option>
 
+                            <option>
+                                Projector - Hall
+                            </option>
 
-<option>
-Meeting Room A1
-</option>
 
 
-<option>
-Projector - Hall
-</option>
+                        </select>
 
 
+                    </div>
 
-</select>
 
 
-</div>
 
 
 
 
 
 
+                    <div className="calendar">
 
 
 
-<div className="calendar">
+                        <h2>
 
+                            {resource} - Tue, 7 Jul
 
+                        </h2>
 
-<h2>
 
-{resource} - Tue, 7 Jul
 
-</h2>
 
 
+                        <div className="timeline">
 
 
 
-<div className="timeline">
 
 
+                            {
 
+                                [
 
+                                    "09:00",
 
-{
+                                    "10:00",
 
-[
+                                    "11:00",
 
-"09:00",
+                                    "12:00",
 
-"10:00",
+                                    "01:00"
 
-"11:00",
+                                ].map(time => (
 
-"12:00",
 
-"01:00"
 
-].map(time=>(
+                                    <div className="time-row" key={time}>
 
 
 
-<div className="time-row" key={time}>
+                                        <div className="time">
 
+                                            {time}
 
+                                        </div>
 
-<div className="time">
 
-{time}
 
-</div>
 
 
+                                        <div className="slot">
 
 
 
-<div className="slot">
 
 
+                                            {
 
+                                                bookings
+                                                    .filter(
+                                                        booking =>
+                                                            booking.resource === resource
+                                                    )
+                                                    .map((booking) => (
 
 
-{
 
-bookings.map((booking)=>(
+                                                        booking.start === time &&
 
 
 
-booking.start===time &&
+                                                        <div
 
+                                                            className={`booking ${booking.status}`}
 
+                                                            key={booking.id}
 
-<div
+                                                        >
 
-className={`booking ${booking.status}`}
 
-key={booking.id}
+                                                            Booked - {booking.user}
 
->
+                                                            <br />
 
+                                                            {booking.start} to {booking.end}
 
-Booked - {booking.user}
 
-<br/>
+                                                        </div>
 
-{booking.start} to {booking.end}
 
 
-</div>
+                                                    ))
 
 
+                                            }
 
-))
 
 
-}
 
 
+                                        </div>
 
 
 
-</div>
 
 
+                                    </div>
 
 
 
-</div>
+                                ))
 
 
+                            }
 
-))
 
 
-}
 
 
 
 
+                        </div>
 
 
+                    </div>
 
-</div>
 
 
-</div>
 
 
 
 
 
 
+                    <form
 
+                        className="booking-form"
 
+                        onSubmit={bookSlot}
 
-<form
+                    >
 
-className="booking-form"
 
-onSubmit={bookSlot}
 
->
 
 
+                        <h2>
 
+                            Book a Slot
 
+                        </h2>
 
-<h2>
 
-Book a Slot
 
-</h2>
 
 
 
 
 
+                        <label>
 
+                            Requested By
 
+                        </label>
 
-<label>
 
-Requested By
 
-</label>
 
+                        <input
 
 
+                            name="user"
 
-<input
 
+                            value={form.user}
 
-name="user"
 
+                            onChange={handleChange}
 
-value={form.user}
 
+                            placeholder="Employee name"
 
-onChange={handleChange}
 
+                        />
 
-placeholder="Employee name"
 
 
-/>
 
 
 
 
 
 
+                        <label>
 
+                            Start Time
 
+                        </label>
 
-<label>
 
-Start Time
 
-</label>
 
+                        <input
 
 
+                            type="time"
 
-<input
 
+                            name="start"
 
-type="time"
 
+                            value={form.start}
 
-name="start"
 
+                            onChange={handleChange}
 
-value={form.start}
 
+                        />
 
-onChange={handleChange}
 
 
-/>
 
 
 
 
 
 
+                        <label>
 
+                            End Time
 
+                        </label>
 
-<label>
 
-End Time
 
-</label>
 
+                        <input
 
 
+                            type="time"
 
-<input
 
+                            name="end"
 
-type="time"
 
+                            value={form.end}
 
-name="end"
 
+                            onChange={handleChange}
 
-value={form.end}
 
+                        />
 
-onChange={handleChange}
 
 
-/>
 
 
 
 
+                        <button>
 
+                            Book Slot
 
+                        </button>
 
-<button>
 
-Book Slot
 
-</button>
 
 
+                    </form>
 
 
 
-</form>
 
 
 
 
 
 
+                    {
 
+                        message &&
 
 
-{
+                        <div className="message">
 
-message &&
+                            {message}
 
+                        </div>
 
-<div className="message">
 
-{message}
+                    }
 
-</div>
 
 
-}
 
 
 
 
 
 
+                    <div className="history">
 
 
 
-<div className="history">
 
 
+                        <h2>
 
+                            Booking History
 
+                        </h2>
 
-<h2>
 
-Booking History
 
-</h2>
 
 
 
 
 
+                        <table>
 
 
+                            <thead>
 
-<table>
 
+                                <tr>
 
-<thead>
 
+                                    <th>
+                                        Resource
+                                    </th>
 
-<tr>
 
+                                    <th>
+                                        User
+                                    </th>
 
-<th>
-Resource
-</th>
 
+                                    <th>
+                                        Time
+                                    </th>
 
-<th>
-User
-</th>
 
+                                    <th>
+                                        Status
+                                    </th>
 
-<th>
-Time
-</th>
 
+                                    <th>
+                                        Action
+                                    </th>
 
-<th>
-Status
-</th>
 
 
-<th>
-Action
-</th>
+                                </tr>
 
 
+                            </thead>
 
-</tr>
 
 
-</thead>
 
 
 
 
+                            <tbody>
 
 
 
-<tbody>
 
+                                {
 
+                                    bookings.map(item => (
 
 
-{
 
-bookings.map(item=>(
+                                        <tr key={item.id}>
 
 
+                                            <td>
+                                                {item.resource}
+                                            </td>
 
-<tr key={item.id}>
 
 
-<td>
-{item.resource}
-</td>
+                                            <td>
+                                                {item.user}
+                                            </td>
 
 
 
-<td>
-{item.user}
-</td>
 
+                                            <td>
 
+                                                {item.start} - {item.end}
 
+                                            </td>
 
-<td>
 
-{item.start} - {item.end}
 
-</td>
 
+                                            <td>
+                                                {item.status}
+                                            </td>
 
 
 
-<td>
-{item.status}
-</td>
 
 
+                                            <td>
 
 
 
-<td>
+                                                {
 
+                                                    item.status !== "Cancelled" &&
 
 
-{
 
-item.status!=="Cancelled" &&
+                                                    <button
 
 
+                                                        className="cancel"
 
-<button
 
+                                                        onClick={() => cancelBooking(item.id)}
 
-className="cancel"
 
+                                                    >
 
-onClick={()=>cancelBooking(item.id)}
+                                                        Cancel
 
+                                                    </button>
 
->
 
-Cancel
 
-</button>
+                                                }
 
 
 
-}
+                                            </td>
 
 
 
-</td>
 
 
+                                        </tr>
 
 
 
-</tr>
+                                    ))
 
 
+                                }
 
-))
 
 
-}
 
 
 
+                            </tbody>
 
 
 
-</tbody>
 
 
 
+                        </table>
 
 
 
-</table>
 
 
 
 
+                    </div>
 
 
 
-</div>
 
 
 
 
 
 
+                </div>
 
 
 
-</div>
 
 
 
+            </div>
 
 
 
-</div>
 
 
+        </div>
 
 
 
-</div>
-
-
-
-)
+    )
 
 
 }

@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import create_tables,get_connection
 from dashboard import router as dashboard_router
 from assets import router as assets_router
-from organization import router as organization_router
+# from organization import router as organization_router
 
 # ============================
 # Create FastAPI Application
@@ -16,7 +16,7 @@ app = FastAPI(
 )
 app.include_router(dashboard_router)
 app.include_router(assets_router)
-app.include_router(organization_router)
+# app.include_router(organization_router)
 
 # ============================
 # Create SQLite Database Tables
