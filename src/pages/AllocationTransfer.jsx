@@ -13,7 +13,7 @@ const AllocationTransfer = () => {
 
         localStorage.removeItem("token");
 
-        navigate("/login");
+        navigate("/");
 
     };
 

@@ -14,7 +14,7 @@ const ResourceBooking = () => {
 
         localStorage.removeItem("token");
 
-        navigate("/login");
+        navigate("/");
 
     };
 
