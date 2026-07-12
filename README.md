@@ -633,3 +633,6 @@ Possible improvements:
 **Goal:** Digitize asset operations and improve organizational efficiency through automation.
 
 ---
+
+# admin email
+admin@assetflow.com
