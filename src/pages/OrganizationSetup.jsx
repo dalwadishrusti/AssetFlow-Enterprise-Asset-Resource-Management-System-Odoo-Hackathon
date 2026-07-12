@@ -1,4 +1,4 @@
-// import "./OrganizationSetup.css";
+import "./CSS/OrganizationSetup.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -19,51 +19,34 @@ function OrganizationSetup() {
 
         <div className="dashboard">
 
-
-            {/* Sidebar */}
-
             <div className="sidebar">
 
 
                 <div className="logo">
-
                     <h2>AF</h2>
-
                 </div>
 
 
-                <button
-                    onClick={() => navigate("/dashboard")}
-                >
+                <button onClick={() => navigate("/dashboard")}>
                     Dashboard
                 </button>
 
 
 
-                <button className="active">
-
+                <button className="active" onClick={() => navigate("/organization")}>
                     Organization Setup
-
                 </button>
 
-
-
-                <button
-                    onClick={() => navigate("/assets")}
-                >
-
+                <button onClick={() => navigate("/assets")}>
                     Assets
-
                 </button>
 
-
-
-                <button>
+                <button onClick={() => navigate("/allocation")}>
                     Allocation & Transfer
                 </button>
 
 
-                <button>
+                <button onClick={() => navigate("/resource")}>
                     Resource Booking
                 </button>
 
@@ -166,9 +149,9 @@ function OrganizationSetup() {
                         <button
 
                             className={
-                                activeTab==="departments"
-                                ? "tab-active"
-                                : ""
+                                activeTab === "departments"
+                                    ? "tab-active"
+                                    : ""
                             }
 
                             onClick={() =>
@@ -188,9 +171,9 @@ function OrganizationSetup() {
                         <button
 
                             className={
-                                activeTab==="categories"
-                                ? "tab-active"
-                                : ""
+                                activeTab === "categories"
+                                    ? "tab-active"
+                                    : ""
                             }
 
                             onClick={() =>
@@ -211,9 +194,9 @@ function OrganizationSetup() {
                         <button
 
                             className={
-                                activeTab==="employees"
-                                ? "tab-active"
-                                : ""
+                                activeTab === "employees"
+                                    ? "tab-active"
+                                    : ""
                             }
 
                             onClick={() =>
@@ -242,190 +225,190 @@ function OrganizationSetup() {
 
 
                     {
-                        activeTab==="departments" &&
+                        activeTab === "departments" &&
 
                         <>
 
 
-                        <div className="summary">
+                            <div className="summary">
 
 
-                            <div className="summary-card">
+                                <div className="summary-card">
 
-                                <h3>
-                                    Total Departments
-                                </h3>
+                                    <h3>
+                                        Total Departments
+                                    </h3>
 
-                                <p>
-                                    12
-                                </p>
-
-                            </div>
-
-
-
-                            <div className="summary-card">
-
-                                <h3>
-                                    Active Departments
-                                </h3>
-
-                                <p>
-                                    10
-                                </p>
-
-                            </div>
-
-
-
-                            <div className="summary-card">
-
-                                <h3>
-                                    Employees
-                                </h3>
-
-                                <p>
-                                    86
-                                </p>
-
-                            </div>
-
-
-                        </div>
-
-
-
-
-
-
-                        <div className="table-box">
-
-
-                            <div className="box-title">
-
-                                🏢 Departments
-
-                            </div>
-
-
-
-
-                            <table>
-
-
-                                <thead>
-
-                                <tr>
-
-                                    <th>
-                                        Department
-                                    </th>
-
-                                    <th>
-                                        Head
-                                    </th>
-
-                                    <th>
-                                        Employees
-                                    </th>
-
-                                    <th>
-                                        Status
-                                    </th>
-
-                                </tr>
-
-                                </thead>
-
-
-
-                                <tbody>
-
-
-                                <tr>
-
-                                    <td>
-                                        Engineering
-                                    </td>
-
-                                    <td>
-                                        Aditi Rao
-                                    </td>
-
-                                    <td>
-                                        24
-                                    </td>
-
-                                    <td>
-                                        <span className="status active-status">
-                                            Active
-                                        </span>
-                                    </td>
-
-                                </tr>
-
-
-
-
-
-                                <tr>
-
-                                    <td>
-                                        Facilities
-                                    </td>
-
-                                    <td>
-                                        Rohan Mehta
-                                    </td>
-
-                                    <td>
+                                    <p>
                                         12
-                                    </td>
+                                    </p>
 
-                                    <td>
-                                        <span className="status active-status">
-                                            Active
-                                        </span>
-                                    </td>
-
-                                </tr>
+                                </div>
 
 
 
+                                <div className="summary-card">
 
+                                    <h3>
+                                        Active Departments
+                                    </h3>
 
-                                <tr>
+                                    <p>
+                                        10
+                                    </p>
 
-                                    <td>
-                                        Field Operations
-                                    </td>
-
-                                    <td>
-                                        Sana Iqbal
-                                    </td>
-
-                                    <td>
-                                        8
-                                    </td>
-
-                                    <td>
-                                        <span className="status inactive-status">
-                                            Inactive
-                                        </span>
-                                    </td>
-
-                                </tr>
+                                </div>
 
 
 
-                                </tbody>
+                                <div className="summary-card">
+
+                                    <h3>
+                                        Employees
+                                    </h3>
+
+                                    <p>
+                                        86
+                                    </p>
+
+                                </div>
 
 
-                            </table>
+                            </div>
 
 
 
-                        </div>
+
+
+
+                            <div className="table-box">
+
+
+                                <div className="box-title">
+
+                                    🏢 Departments
+
+                                </div>
+
+
+
+
+                                <table>
+
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th>
+                                                Department
+                                            </th>
+
+                                            <th>
+                                                Head
+                                            </th>
+
+                                            <th>
+                                                Employees
+                                            </th>
+
+                                            <th>
+                                                Status
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+
+
+                                    <tbody>
+
+
+                                        <tr>
+
+                                            <td>
+                                                Engineering
+                                            </td>
+
+                                            <td>
+                                                Aditi Rao
+                                            </td>
+
+                                            <td>
+                                                24
+                                            </td>
+
+                                            <td>
+                                                <span className="status active-status">
+                                                    Active
+                                                </span>
+                                            </td>
+
+                                        </tr>
+
+
+
+
+
+                                        <tr>
+
+                                            <td>
+                                                Facilities
+                                            </td>
+
+                                            <td>
+                                                Rohan Mehta
+                                            </td>
+
+                                            <td>
+                                                12
+                                            </td>
+
+                                            <td>
+                                                <span className="status active-status">
+                                                    Active
+                                                </span>
+                                            </td>
+
+                                        </tr>
+
+
+
+
+
+                                        <tr>
+
+                                            <td>
+                                                Field Operations
+                                            </td>
+
+                                            <td>
+                                                Sana Iqbal
+                                            </td>
+
+                                            <td>
+                                                8
+                                            </td>
+
+                                            <td>
+                                                <span className="status inactive-status">
+                                                    Inactive
+                                                </span>
+                                            </td>
+
+                                        </tr>
+
+
+
+                                    </tbody>
+
+
+                                </table>
+
+
+
+                            </div>
 
 
                         </>
@@ -444,7 +427,7 @@ function OrganizationSetup() {
 
 
                     {
-                        activeTab==="categories" &&
+                        activeTab === "categories" &&
 
 
                         <div className="table-box">
@@ -461,88 +444,88 @@ function OrganizationSetup() {
                             <table>
 
 
-                            <thead>
+                                <thead>
 
-                            <tr>
+                                    <tr>
 
-                                <th>
-                                    Category
-                                </th>
-
-
-                                <th>
-                                    Type
-                                </th>
+                                        <th>
+                                            Category
+                                        </th>
 
 
-                                <th>
-                                    Assets
-                                </th>
+                                        <th>
+                                            Type
+                                        </th>
 
 
-                            </tr>
-
-                            </thead>
-
-
-
-                            <tbody>
+                                        <th>
+                                            Assets
+                                        </th>
 
 
-                            <tr>
+                                    </tr>
 
-                                <td>
-                                    Laptop
-                                </td>
-
-                                <td>
-                                    IT Equipment
-                                </td>
-
-                                <td>
-                                    45
-                                </td>
-
-                            </tr>
+                                </thead>
 
 
 
-                            <tr>
-
-                                <td>
-                                    Vehicles
-                                </td>
-
-                                <td>
-                                    Transport
-                                </td>
-
-                                <td>
-                                    18
-                                </td>
-
-                            </tr>
+                                <tbody>
 
 
-                            <tr>
+                                    <tr>
 
-                                <td>
-                                    Furniture
-                                </td>
+                                        <td>
+                                            Laptop
+                                        </td>
 
-                                <td>
-                                    Office
-                                </td>
+                                        <td>
+                                            IT Equipment
+                                        </td>
 
-                                <td>
-                                    70
-                                </td>
+                                        <td>
+                                            45
+                                        </td>
 
-                            </tr>
+                                    </tr>
 
 
 
-                            </tbody>
+                                    <tr>
+
+                                        <td>
+                                            Vehicles
+                                        </td>
+
+                                        <td>
+                                            Transport
+                                        </td>
+
+                                        <td>
+                                            18
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Furniture
+                                        </td>
+
+                                        <td>
+                                            Office
+                                        </td>
+
+                                        <td>
+                                            70
+                                        </td>
+
+                                    </tr>
+
+
+
+                                </tbody>
 
 
                             </table>
@@ -567,81 +550,81 @@ function OrganizationSetup() {
 
                     {
 
-                    activeTab==="employees" &&
+                        activeTab === "employees" &&
 
 
-                    <div className="employee-grid">
+                        <div className="employee-grid">
 
 
-                        <div className="employee-card">
+                            <div className="employee-card">
 
-                            <div className="avatar">
-                                AR
-                            </div>
+                                <div className="avatar">
+                                    AR
+                                </div>
 
-                            <h3>
-                                Aditi Rao
-                            </h3>
+                                <h3>
+                                    Aditi Rao
+                                </h3>
 
-                            <p>
-                                Engineering
-                            </p>
-
-
-                        </div>
-                        
+                                <p>
+                                    Engineering
+                                </p>
 
 
-
-
-                        <div className="employee-card">
-
-
-                            <div className="avatar">
-                                RM
                             </div>
 
 
-                            <h3>
-                                Rohan Mehta
-                            </h3>
-
-
-                            <p>
-                                Facilities
-                            </p>
-
-
-                        </div>
 
 
 
+                            <div className="employee-card">
 
 
+                                <div className="avatar">
+                                    RM
+                                </div>
 
-                        <div className="employee-card">
+
+                                <h3>
+                                    Rohan Mehta
+                                </h3>
 
 
-                            <div className="avatar">
-                                SI
+                                <p>
+                                    Facilities
+                                </p>
+
+
                             </div>
 
 
-                            <h3>
-                                Sana Iqbal
-                            </h3>
 
 
-                            <p>
-                                Field Operations
-                            </p>
+
+
+                            <div className="employee-card">
+
+
+                                <div className="avatar">
+                                    SI
+                                </div>
+
+
+                                <h3>
+                                    Sana Iqbal
+                                </h3>
+
+
+                                <p>
+                                    Field Operations
+                                </p>
+
+
+                            </div>
+
 
 
                         </div>
-
-
-
-                    </div>
 
 
                     }

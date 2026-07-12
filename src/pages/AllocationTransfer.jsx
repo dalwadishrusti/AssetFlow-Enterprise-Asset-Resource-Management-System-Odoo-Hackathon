@@ -22,25 +22,41 @@ const AllocationTransfer = () => {
     const [assets] = useState([
 
         {
-            id: "AF-0114",
-            name: "Dell Laptop",
+            id: "1",
+            name: "Laptop",
             category: "IT Equipment",
-            holder: "Priya Sharma"
+            holder: "IT department"
         },
-
         {
-            id: "AF-0201",
-            name: "iPhone 15",
-            category: "Mobile Device",
-            holder: "Rahul Patel"
-        },
-
-        {
-            id: "AF-0305",
-            name: "MacBook Pro",
+            id: "2",
+            name: "phone",
             category: "IT Equipment",
-            holder: "Unassigned"
-        }
+            holder: "Neha Patel"
+        },
+        {
+            id: "3",
+            name: "Printer",
+            category: "IT Equipment",
+            holder: "HR Deparment"
+        },
+        {
+            id: "4",
+            name: "Keyboard",
+            category: "IT Equipment",
+            holder: "IT Department"
+        },
+        {
+            id: "5",
+            name: "Computers",
+            category: "IT Equipment",
+            holder: "CS department"
+        },
+        {
+            id: "6",
+            name: "Projector",
+            category: "IT Equipment",
+            holder: "Rohan Sharma"
+        },
 
     ]);
 
@@ -48,12 +64,10 @@ const AllocationTransfer = () => {
 
 
     const employees = [
-
         "Priya Sharma",
         "Rahul Patel",
         "Amit Shah",
         "Neha Patel"
-
     ];
 
 
@@ -149,65 +163,43 @@ const AllocationTransfer = () => {
             [e.target.name]: e.target.value
 
         });
-
-
     };
-
-
-
-
-
-
 
     const handleSubmit = (e) => {
 
-
         e.preventDefault();
-
 
 
         if (!selectedAsset) {
 
             setMessage("Please select asset");
-
             return;
 
         }
-
 
 
         if (formData.to === "") {
 
-
             setMessage("Please select transfer destination");
-
             return;
 
         }
-
-
 
 
 
         const record = {
 
-
             assetId: selectedAsset.id,
 
             assetName: selectedAsset.name,
 
-
             from: `${formData.fromType} - ${formData.from}`,
-
 
             to: `${formData.toType} - ${formData.to}`,
 
-
             reason: formData.reason,
 
-
             returnDate: formData.returnDate,
-
 
             date: new Date().toLocaleDateString()
 
@@ -215,11 +207,10 @@ const AllocationTransfer = () => {
 
 
 
+        // save into variable (state)
+        setHistory(prevHistory => [
 
-
-        setHistory([
-
-            ...history,
+            ...prevHistory,
 
             record
 
@@ -228,19 +219,30 @@ const AllocationTransfer = () => {
 
 
         setMessage(
-
             "Transfer request submitted successfully"
-
         );
 
 
+        // clear form after save
+
+        setFormData({
+
+            fromType: "Employee",
+
+            from: selectedAsset.holder,
+
+            toType: "Employee",
+
+            to: "",
+
+            reason: "",
+
+            returnDate: ""
+
+        });
+
 
     };
-
-
-
-
-
 
     return (
 

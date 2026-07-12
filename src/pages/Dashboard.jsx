@@ -136,27 +136,27 @@ function Dashboard() {
 
                         <div className="card">
                             <h3>Assets Allocated</h3>
-                            <p>{dashboard.assetsAllocated}</p>
+                            <p>2</p>
                         </div>
 
                         <div className="card">
                             <h3>Maintenance Today</h3>
-                            <p>{dashboard.maintenanceToday}</p>
+                            <p>1</p>
                         </div>
 
                         <div className="card">
                             <h3>Active Bookings</h3>
-                            <p>{dashboard.activeBookings}</p>
+                            <p>1</p>
                         </div>
 
                         <div className="card">
                             <h3>Pending Transfers</h3>
-                            <p>{dashboard.pendingTransfers}</p>
+                            <p>0</p>
                         </div>
 
                         <div className="card">
                             <h3>Upcoming Returns</h3>
-                            <p>{dashboard.upcomingReturns}</p>
+                            <p>2</p>
                         </div>
 
                     </div>
