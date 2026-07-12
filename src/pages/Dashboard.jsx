@@ -31,13 +31,21 @@ function Dashboard() {
                     Assets
                 </button>
 
-                <button>Allocation & Transfer</button>
+                <button onClick={() => navigate("/allocation")}>
+                    Allocation & Transfer
+                </button>
 
-                <button>Resource Booking</button>
+                <button onClick={() => navigate("/resource")}>
+                    Resource Booking
+                </button>
 
-                <button>Maintenance</button>
+                <button onClick={() => navigate("/maintenance")}>
+                    Maintenance
+                </button>
 
-                <button>Audit</button>
+                <button onClick={() => navigate("/audit")}>
+                    Audit
+                </button>
 
                 <button>Reports</button>
 
